@@ -1,13 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
-import { AppKitProvider } from './providers/AppKitProvider'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AppKitProvider>
+    <BrowserRouter>
       <App />
-    </AppKitProvider>
+    </BrowserRouter>
   </StrictMode>,
 )

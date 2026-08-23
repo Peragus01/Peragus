@@ -1,1 +1,0 @@
-export { PainelOperacional as Dashboard } from './PainelOperacional'

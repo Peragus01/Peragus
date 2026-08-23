@@ -1,0 +1,26 @@
+import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import { describe, expect, it } from 'vitest'
+import App from './App'
+
+function renderPath(path: string) {
+  return render(
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>,
+  )
+}
+
+describe('public routes', () => {
+  it('renders the B2B sandbox proposition at the root', () => {
+    renderPath('/')
+    expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
+    expect(screen.getByText(/mockusdt/i)).toBeInTheDocument()
+  })
+
+  it('does not expose the former retail dashboard', () => {
+    renderPath('/dashboard')
+    expect(screen.getByRole('heading', { name: /página não encontrada/i })).toBeInTheDocument()
+    expect(screen.queryByText(/painel operacional/i)).not.toBeInTheDocument()
+  })
+})
