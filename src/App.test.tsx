@@ -29,6 +29,25 @@ describe('public routes', () => {
     expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
   })
 
+  it('wraps localized pages in the accessible marketing layout', () => {
+    renderPath('/es')
+
+    expect(screen.getByRole('link', { name: 'Saltar al contenido' })).toHaveAttribute(
+      'href',
+      '#main-content',
+    )
+    expect(screen.getByRole('link', { name: 'Documentación' })).toHaveAttribute(
+      'href',
+      '/es/docs',
+    )
+    expect(screen.getByText('peragus.com.br')).toBeInTheDocument()
+  })
+
+  it('keeps reserved sandbox paths out of the website router', () => {
+    renderPath('/es/register')
+    expect(screen.getByRole('heading', { name: /página no encontrada/i })).toBeInTheDocument()
+  })
+
   it('renders the landing page at the English root', () => {
     renderPath('/en')
     expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
