@@ -1,369 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
-@import "tailwindcss";
+@import '@fontsource-variable/manrope';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import 'tailwindcss';
 
-/* Peragus institutional fintech design system */
 @theme {
-  --color-surface: #0a1f44;
-  --color-surface-secondary: #0d2754;
-  --color-surface-card: #102c5c;
-  --color-surface-elevated: #14376e;
-  --color-surface-hover: #19427e;
-
-  --color-border: rgba(255, 255, 255, 0.13);
-  --color-border-hover: rgba(255, 255, 255, 0.24);
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
-
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #d8e6ff;
-  --color-text-tertiary: #a9bde3;
-  --color-text-disabled: #7088b3;
-
-  /* Legacy green aliases now map to Peragus teal */
-  --color-green-accent: #14b8a6;
-  --color-green-accent-hover: #0f9487;
-  --color-green-subtle: rgba(20, 184, 166, 0.14);
-  --color-green-border: rgba(20, 184, 166, 0.36);
-
-  /* Navy/Blue - institutional elements */
-  --color-navy-accent: #2563eb;
-  --color-navy-accent-hover: #3b82f6;
-  --color-navy-subtle: rgba(37, 99, 235, 0.16);
-  --color-navy-border: rgba(37, 99, 235, 0.38);
-
-  /* Navy palette - for institutional accents — improved contrast */
-  --color-navy-50: #0a1628;
-  --color-navy-100: #0f1f3d;
-  --color-navy-200: #142952;
-  --color-navy-300: #1e4a8a;
-  --color-navy-400: #3b82f6;
-  --color-navy-500: #60a5fa;
-  --color-navy-600: #80b5ff;
-  --color-navy-700: #a3c8ff;
-  --color-navy-800: #c8ddff;
-  --color-navy-900: #e6f0ff;
-
-  --color-gray-50: #f8fafc;
-  --color-gray-100: #f1f5f9;
-  --color-gray-200: #e2e8f0;
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-500: #64748b;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
-  --color-gray-800: #1e293b;
-  --color-gray-900: #0f172a;
-
-  /* Red for errors/destructive — improved contrast */
-  --color-red-50: #2a0a0a;
-  --color-red-100: #3d1212;
-  --color-red-200: #521a1a;
-  --color-red-300: #7f1d1d;
-  --color-red-400: #ef4444;
-  --color-red-500: #f87171;
-  --color-red-600: #fca5a5;
-  --color-red-700: #fca5a5;
-  --color-red-800: #fecaca;
-  --color-red-900: #ffffff;
-
-  /* Yellow for warnings — improved contrast */
-  --color-yellow-50: #261a00;
-  --color-yellow-100: #3d2d00;
-  --color-yellow-200: #5c4300;
-  --color-yellow-300: #7a5a00;
-  --color-yellow-400: #eab308;
-  --color-yellow-500: #facc15;
-  --color-yellow-600: #fde68a;
-  --color-yellow-700: #fef08a;
-  --color-yellow-800: #fef9c3;
-  --color-yellow-900: #ffffff;
-
-  /* Orange for analysis status — improved contrast */
-  --color-orange-50: #2a1400;
-  --color-orange-100: #3d2000;
-  --color-orange-200: #5c3000;
-  --color-orange-300: #7f4000;
-  --color-orange-400: #f97316;
-  --color-orange-500: #fb923c;
-  --color-orange-600: #fda048;
-  --color-orange-700: #fdb87a;
-  --color-orange-800: #fed7aa;
-  --color-orange-900: #fff0e0;
-
-  /* Blue for info */
-  --color-blue-50: #0a1628;
-  --color-blue-100: #0f1f3d;
-  --color-blue-200: #142952;
-  --color-blue-300: #1e3a5f;
-  --color-blue-400: #3b82f6;
-  --color-blue-500: #60a5fa;
-  --color-blue-600: #93c5fd;
-  --color-blue-700: #bfdbfe;
-  --color-blue-800: #dbeafe;
-  --color-blue-900: #eff6ff;
-
-  /* Indigo for processing — improved contrast */
-  --color-indigo-50: #0f0a2e;
-  --color-indigo-100: #1a1440;
-  --color-indigo-200: #251e52;
-  --color-indigo-300: #4338ca;
-  --color-indigo-400: #6366f1;
-  --color-indigo-500: #818cf8;
-  --color-indigo-600: #a5b4fc;
-  --color-indigo-700: #c7d2fe;
-  --color-indigo-800: #e0e7ff;
-  --color-indigo-900: #eef2ff;
-
-  /* Purple for sent — improved contrast */
-  --color-purple-50: #1a0a2e;
-  --color-purple-100: #2d1440;
-  --color-purple-200: #3b1f52;
-  --color-purple-300: #7c3aed;
-  --color-purple-400: #a855f7;
-  --color-purple-500: #c084fc;
-  --color-purple-600: #d8b4fe;
-  --color-purple-700: #e9d5ff;
-  --color-purple-800: #f3e8ff;
-  --color-purple-900: #faf5ff;
-
-  /* Keep actual white accessible for text on colored backgrounds */
-  --color-actual-white: #ffffff;
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.16);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 18px 52px rgba(0, 0, 0, 0.28);
-  --shadow-xl: 0 28px 90px rgba(0, 0, 0, 0.36);
-
-  /* Fonts */
-  --font-sans: 'Manrope', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-
-  /* Disney-inspired custom easings */
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-back: cubic-bezier(0.34, 1.3, 0.4, 1);
-  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+  --color-midnight: #06191d;
+  --color-surface: #0c272c;
+  --color-surface-raised: #12353b;
+  --color-line: #25474c;
+  --color-primary: #f1f7f5;
+  --color-secondary: #a8bcb8;
+  --color-tertiary: #7f9b97;
+  --color-mint: #4de0bd;
+  --color-data: #6680e8;
+  --color-sandbox: #e6c76d;
+  --color-error: #ff8a8a;
+  --font-sans: 'Manrope Variable', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --shadow-panel: 0 24px 64px rgb(0 0 0 / 0.28);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Base styles ── */
 html {
   scroll-behavior: smooth;
+  background: var(--color-midnight);
 }
 
 body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-midnight);
+  color: var(--color-primary);
   font-family: var(--font-sans);
-  background-color: var(--color-surface);
-  background-image:
-    radial-gradient(circle at 18% 10%, rgba(37, 99, 235, 0.28), transparent 28rem),
-    radial-gradient(circle at 82% 0%, rgba(20, 184, 166, 0.16), transparent 26rem);
-  color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* ── Card utility ── */
-.bg-card {
-  background-color: var(--color-surface-card);
+:focus-visible {
+  outline: 2px solid var(--color-mint);
+  outline-offset: 3px;
 }
 
-.bg-white .text-text-primary {
-  color: #0f172a;
+::selection {
+  background: var(--color-mint);
+  color: #08211e;
 }
 
-.bg-white .text-text-secondary {
-  color: #334155;
-}
-
-.bg-white .text-text-tertiary {
-  color: #64748b;
-}
-
-.bg-white .bg-surface-secondary {
-  background-color: #f8fafc;
-}
-
-.bg-white .bg-surface-elevated {
-  background-color: #f1f5f9;
-}
-
-.subtle-grid {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-.premium-shadow {
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.30);
-}
-
-@keyframes valueFlow {
-  0% { transform: translateX(-20%); opacity: 0; }
-  20%, 80% { opacity: 1; }
-  100% { transform: translateX(120%); opacity: 0; }
-}
-
-.animate-value-flow {
-  animation: valueFlow 3.8s ease-in-out infinite;
-}
-
-/* ── Appear animations (Disney principles: anticipation, staging, ease-in/ease-out) ── */
-@keyframes fadeIn {
+@keyframes section-enter {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes fadeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(-8px); }
-}
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes scaleOut {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0.95); }
-}
-@keyframes liftIn {
-  from { opacity: 0; transform: translateY(12px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-@keyframes pulseSlow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.7; }
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-@keyframes progressPulse {
-  0% { width: 0%; }
-  50% { width: 70%; }
-  100% { width: 100%; }
-}
-@keyframes breathe {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.18); }
-  50% { box-shadow: 0 0 0 8px rgba(20, 184, 166, 0); }
-}
-@keyframes checkPop {
-  0% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); opacity: 1; }
-}
 
-/* ── Disney-inspired animation classes ── */
-.animate-fade-in {
-  animation: fadeIn 0.45s var(--ease-out-expo) forwards;
-}
-.animate-fade-out {
-  animation: fadeOut 0.3s var(--ease-out-expo) forwards;
-}
-.animate-slide-up {
-  animation: slideUp 0.5s var(--ease-out-expo) forwards;
-}
-.animate-slide-down {
-  animation: slideDown 0.35s var(--ease-out-expo) forwards;
-}
-.animate-scale-in {
-  animation: scaleIn 0.35s var(--ease-out-back) forwards;
-}
-.animate-scale-out {
-  animation: scaleOut 0.25s var(--ease-out-expo) forwards;
-}
-.animate-lift-in {
-  animation: liftIn 0.4s var(--ease-out-expo) forwards;
-}
-.animate-pulse-slow {
-  animation: pulseSlow 2.5s ease-in-out infinite;
-}
-.animate-breathe {
-  animation: breathe 2s ease-in-out infinite;
-}
-.animate-check-pop {
-  animation: checkPop 0.4s var(--ease-spring) forwards;
-}
-.animate-spin-slow {
-  animation: spin 2s linear infinite;
-}
-
-/* ── Staggered children (staging principle) ── */
-.stagger-1 { animation-delay: 0ms; }
-.stagger-2 { animation-delay: 80ms; }
-.stagger-3 { animation-delay: 160ms; }
-.stagger-4 { animation-delay: 240ms; }
-.stagger-5 { animation-delay: 320ms; }
-.stagger-6 { animation-delay: 400ms; }
-
-/* ── Follow through & overlapping action ── */
-.follow-through {
-  transition: all 0.4s var(--ease-out-expo);
-}
-.follow-through-fast {
-  transition: all 0.25s var(--ease-out-expo);
-}
-
-/* ── Spring-like button press (secondary action + squash/stretch) ── */
-.press-effect {
-  transition: transform 0.15s var(--ease-spring), box-shadow 0.15s ease;
-}
-.press-effect:active {
-  transform: scale(0.97);
-}
-
-/* ── Card hover lift (anticipation) ── */
-.card-lift {
-  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo), border-color 0.3s ease;
-}
-.card-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* ── Page transition wrapper ── */
-.page-enter {
-  animation: fadeIn 0.35s var(--ease-out-expo), slideUp 0.4s var(--ease-out-expo);
-}
-
-/* ── Tab content transition ── */
-.tab-content-enter {
-  animation: fadeIn 0.3s var(--ease-out-expo), slideUp 0.25s var(--ease-out-expo);
-}
-
-/* ── Selection ── */
-::selection {
-  background-color: var(--color-green-accent);
-  color: #ffffff;
-}
-
-/* ── Scrollbar ── */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.15);
+.section-enter {
+  animation: section-enter 220ms var(--ease-out) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
 }
