@@ -4,30 +4,24 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold tracking-[-0.01em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 press-effect',
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[7px] px-4 text-sm font-semibold transition-colors duration-150 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40',
   {
     variants: {
       variant: {
-        default: 'bg-[#2563EB] text-actual-white hover:bg-[#1D4ED8] shadow-sm hover:shadow-md',
-        destructive: 'bg-red-500 text-actual-white hover:bg-red-600',
-        outline: 'border border-border bg-card text-text-secondary hover:bg-surface-hover hover:text-text-primary hover:border-border-hover',
-        secondary: 'bg-surface-elevated text-text-primary hover:bg-surface-hover',
-        ghost: 'text-text-secondary hover:text-text-primary hover:bg-surface-hover',
-        link: 'text-green-accent underline-offset-4 hover:underline',
-        navy: 'bg-black text-actual-white hover:bg-gray-800 shadow-sm hover:shadow-md',
+        primary: 'bg-mint text-[#08211e] hover:bg-[#67e7c8]',
+        secondary: 'border border-line bg-surface text-primary hover:bg-surface-raised',
+        ghost: 'text-secondary hover:bg-surface hover:text-primary',
+        destructive: 'bg-error text-midnight hover:bg-[#ff9c9c]',
       },
       size: {
-        default: 'h-10 px-5 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-12 rounded-lg px-8 text-base',
-        icon: 'h-10 w-10',
+        default: 'h-11 px-4',
+        sm: 'h-11 px-3 text-sm',
+        lg: 'h-12 px-6 text-base',
+        icon: 'h-11 w-11 px-0',
       },
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
-    },
-  }
+    defaultVariants: { variant: 'primary', size: 'default' },
+  },
 )
 
 export interface ButtonProps
@@ -50,4 +44,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = 'Button'
 
-export { Button }
+// The variant helper is part of the public button API.
+// eslint-disable-next-line react-refresh/only-export-components
+export { Button, buttonVariants }
