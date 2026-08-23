@@ -55,6 +55,24 @@ describe('public routes', () => {
     expect(screen.getByRole('main')).toHaveAttribute('data-locale', 'en')
   })
 
+  it.each([
+    ['/terms', 'Termos do sandbox'],
+    ['/privacy', 'Privacidade'],
+    ['/compliance', 'Compliance'],
+    ['/security', 'Segurança'],
+    ['/es/terms', 'Términos del sandbox'],
+    ['/es/privacy', 'Privacidad'],
+    ['/es/compliance', 'Cumplimiento'],
+    ['/es/security', 'Seguridad'],
+    ['/en/terms', 'Sandbox terms'],
+    ['/en/privacy', 'Privacy'],
+    ['/en/compliance', 'Compliance'],
+    ['/en/security', 'Security'],
+  ])('renders the localized legal document at %s', (path, title) => {
+    renderPath(path)
+    expect(screen.getByRole('heading', { level: 1, name: title })).toBeInTheDocument()
+  })
+
   it('localizes the Spanish catch-all', () => {
     renderPath('/es/desconocida')
     expect(screen.getByRole('heading', { name: /página no encontrada/i })).toBeInTheDocument()

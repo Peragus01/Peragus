@@ -2,6 +2,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { MarketingLayout } from '@/components/layout/MarketingLayout'
 import { homePath, LOCALES, localeFromPathname } from '@/i18n/routing'
 import { Landing } from '@/pages/Landing'
+import { LegalPage } from '@/pages/Legal'
 import { NotFound } from '@/pages/NotFound'
 
 function LocalizedNotFound() {
@@ -20,6 +21,13 @@ export default function App() {
           element={<MarketingLayout locale={locale} />}
         >
           <Route index element={<Landing locale={locale} />} />
+          {(['terms', 'privacy', 'compliance', 'security'] as const).map((type) => (
+            <Route
+              key={type}
+              path={type}
+              element={<LegalPage locale={locale} type={type} />}
+            />
+          ))}
         </Route>
       ))}
       <Route path="*" element={<LocalizedNotFound />} />
