@@ -16,7 +16,7 @@ export function SettlementEventPanel({
   return (
     <Surface elevation="raised" className="overflow-hidden shadow-panel">
       <div className="flex items-center justify-between border-b border-line px-4 py-3 font-mono text-xs text-tertiary">
-        <span>{content.operation}</span>
+        <span className="text-secondary">{content.operation}</span>
         <StatusBadge tone="sandbox">{content.environment}</StatusBadge>
       </div>
       <ol>
