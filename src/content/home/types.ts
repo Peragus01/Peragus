@@ -46,7 +46,7 @@ export type HomeContent = {
     eyebrow: string
     title: string
     description: string
-    nodes: [string, string, string, string]
+    nodes: [string, string, string, string, string, string]
   }
   disclosure: { eyebrow: string; title: string; body: string }
   finalCta: { eyebrow: string; title: string; body: string; primary: string; secondary: string }

@@ -23,3 +23,21 @@ test('legacy security-info route remains a 404', async ({ page }) => {
   await page.goto('/security-info')
   await expect(page.getByRole('heading', { level: 1, name: 'Página não encontrada' })).toBeVisible()
 })
+
+test.describe('reduced motion', () => {
+  test.use({ reducedMotion: 'reduce' })
+
+  test('removes real section animation and smooth scrolling', async ({ page }) => {
+    await page.goto('/')
+    const hero = page.getByRole('heading', { level: 1 }).locator('..').locator('..')
+
+    await page.emulateMedia({ reducedMotion: 'no-preference' })
+    await expect(hero).toHaveCSS('animation-name', 'section-enter')
+    await expect(hero).toHaveCSS('animation-duration', '0.22s')
+
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await expect(hero).toHaveCSS('animation-name', 'none')
+    await expect(hero).toHaveCSS('transform', 'none')
+    await expect(page.locator('html')).toHaveCSS('scroll-behavior', 'auto')
+  })
+})

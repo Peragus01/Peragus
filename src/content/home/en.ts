@@ -38,6 +38,7 @@ export const enHome = {
       { title: 'Cross-system reference', body: 'Connect the test payment to the on-chain transaction.' },
       { title: 'Customer-controlled wallet', body: 'Set the receiving address in the test environment.' },
       { title: 'Integration-ready flow', body: 'Validate the model before selecting a gateway or BaaS.' },
+      { title: 'Inspectable test history', body: 'The demonstration organizes test-operation references and states for inspection without presenting live data.' },
     ],
   },
   useCases: {
@@ -48,7 +49,7 @@ export const enHome = {
   infrastructure: {
     eyebrow: 'Demonstrable technology', title: 'From payment event to network transaction.',
     description: 'An explicit sequence connects each payment state to test settlement.',
-    nodes: ['B2B customer', 'Simulated Pix', 'Peragus orchestration', 'MockUSDT on Amoy'],
+    nodes: ['B2B customer', 'Simulated Pix', 'Payment confirmation', 'Peragus orchestration', 'MockUSDT transfer', 'Customer wallet on Amoy'],
   },
   disclosure: {
     eyebrow: 'Environment limits', title: 'A sandbox for technical validation.',

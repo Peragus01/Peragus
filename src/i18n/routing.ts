@@ -30,3 +30,8 @@ export function localeFromPathname(pathname: string): Locale {
   const segment = pathname.split('/').filter(Boolean)[0]
   return segment === 'es' || segment === 'en' ? segment : 'pt'
 }
+
+export function isUnsupportedLocalePath(pathname: string): boolean {
+  const segment = pathname.split('/').filter(Boolean)[0]
+  return Boolean(segment && /^[a-z]{2}(?:-[a-z]{2})?$/i.test(segment) && segment !== 'es' && segment !== 'en')
+}

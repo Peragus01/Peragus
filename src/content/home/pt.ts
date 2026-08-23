@@ -38,6 +38,7 @@ export const ptHome = {
       { title: 'Referência entre sistemas', body: 'Relacione o pagamento de teste à transação on-chain.' },
       { title: 'Carteira sob seu controle', body: 'Defina o endereço de recebimento no ambiente de testes.' },
       { title: 'Fluxo preparado para integração', body: 'Valide o modelo antes da escolha de um gateway ou BaaS.' },
+      { title: 'Histórico de testes inspecionável', body: 'A demonstração organiza referências e estados de operações de teste para inspeção, sem apresentar dados ao vivo.' },
     ],
   },
   useCases: {
@@ -48,7 +49,7 @@ export const ptHome = {
   infrastructure: {
     eyebrow: 'Tecnologia demonstrável', title: 'Do evento de pagamento à transação na rede.',
     description: 'Uma sequência explícita conecta cada estado do pagamento à liquidação de teste.',
-    nodes: ['Cliente B2B', 'Pix simulado', 'Orquestração Peragus', 'MockUSDT na Amoy'],
+    nodes: ['Cliente B2B', 'Pix simulado', 'Confirmação do pagamento', 'Orquestração Peragus', 'Transferência MockUSDT', 'Carteira do cliente na Amoy'],
   },
   disclosure: {
     eyebrow: 'Limites do ambiente', title: 'Um sandbox para validação técnica.',

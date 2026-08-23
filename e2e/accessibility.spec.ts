@@ -7,6 +7,16 @@ test('homepage has no automatically detectable WCAG A/AA violations', async ({ p
   expect(results.violations).toEqual([])
 })
 
+test('all Portuguese legal templates have no automatically detectable WCAG A/AA violations', async ({ page }) => {
+  for (const path of ['/terms', '/privacy', '/compliance', '/security']) {
+    await page.goto(path)
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+      .analyze()
+    expect(results.violations, path).toEqual([])
+  }
+})
+
 test('skip link and mobile menu work from the keyboard', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 })
   await page.goto('/')

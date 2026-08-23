@@ -38,6 +38,7 @@ export const esHome = {
       { title: 'Referencia entre sistemas', body: 'Relaciona el pago de prueba con la transacción on-chain.' },
       { title: 'Billetera bajo tu control', body: 'Define la dirección de recepción en el entorno de pruebas.' },
       { title: 'Flujo preparado para integración', body: 'Valida el modelo antes de elegir un gateway o BaaS.' },
+      { title: 'Historial de pruebas inspeccionable', body: 'La demostración organiza referencias y estados de operaciones de prueba para su inspección, sin presentar datos en vivo.' },
     ],
   },
   useCases: {
@@ -48,7 +49,7 @@ export const esHome = {
   infrastructure: {
     eyebrow: 'Tecnología demostrable', title: 'Del evento de pago a la transacción en la red.',
     description: 'Una secuencia explícita conecta cada estado del pago con la liquidación de prueba.',
-    nodes: ['Cliente B2B', 'Pix simulado', 'Orquestación Peragus', 'MockUSDT en Amoy'],
+    nodes: ['Cliente B2B', 'Pix simulado', 'Confirmación del pago', 'Orquestación Peragus', 'Transferencia MockUSDT', 'Billetera del cliente en Amoy'],
   },
   disclosure: {
     eyebrow: 'Límites del entorno', title: 'Un sandbox para validación técnica.',

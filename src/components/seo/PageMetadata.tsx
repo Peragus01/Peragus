@@ -13,6 +13,7 @@ type PageMetadataProps = {
   description: string
   canonicalPath: string
   alternates: Record<Locale, string>
+  noIndex?: boolean
 }
 
 function upsertMeta(key: 'name' | 'property', value: string, content: string) {
@@ -42,12 +43,14 @@ export function PageMetadata({
   description,
   canonicalPath,
   alternates,
+  noIndex = false,
 }: PageMetadataProps) {
   useEffect(() => {
     const canonical = new URL(canonicalPath, ORIGIN).toString()
     document.documentElement.lang = locale === 'pt' ? 'pt-BR' : locale
     document.title = title
     upsertMeta('name', 'description', description)
+    upsertMeta('name', 'robots', noIndex ? 'noindex, nofollow' : 'index, follow')
     upsertMeta('property', 'og:title', title)
     upsertMeta('property', 'og:description', description)
     upsertMeta('property', 'og:type', 'website')
@@ -57,20 +60,27 @@ export function PageMetadata({
     upsertMeta('name', 'twitter:card', 'summary_large_image')
     upsertMeta('name', 'twitter:title', title)
     upsertMeta('name', 'twitter:description', description)
+    upsertMeta('name', 'twitter:image', `${ORIGIN}/og-peragus.svg`)
     upsertLink('link[rel="canonical"]', { rel: 'canonical', href: canonical })
 
     const hrefLang = { pt: 'pt-BR', es: 'es-419', en: 'en' } satisfies Record<
       Locale,
       string
     >
-    for (const target of ['pt', 'es', 'en'] as const) {
-      upsertLink(`link[rel="alternate"][hreflang="${hrefLang[target]}"]`, {
-        rel: 'alternate',
-        hreflang: hrefLang[target],
-        href: new URL(alternates[target], ORIGIN).toString(),
-      })
+    if (noIndex) {
+      document.head
+        .querySelectorAll('link[rel="alternate"]')
+        .forEach((element) => element.remove())
+    } else {
+      for (const target of ['pt', 'es', 'en'] as const) {
+        upsertLink(`link[rel="alternate"][hreflang="${hrefLang[target]}"]`, {
+          rel: 'alternate',
+          hreflang: hrefLang[target],
+          href: new URL(alternates[target], ORIGIN).toString(),
+        })
+      }
     }
-  }, [alternates, canonicalPath, description, locale, title])
+  }, [alternates, canonicalPath, description, locale, noIndex, title])
 
   return null
 }

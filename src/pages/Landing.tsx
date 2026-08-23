@@ -27,7 +27,7 @@ export function Landing({ locale }: { locale: Locale }) {
           aria-hidden="true"
           className="pointer-events-none absolute -right-48 -top-56 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,rgba(77,224,189,0.12)_0%,rgba(77,224,189,0)_68%)]"
         />
-        <Container className="relative grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+        <Container className="section-enter relative grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
           <div>
             <p className="font-mono text-xs uppercase tracking-[.14em] text-mint">
               {content.hero.label}
@@ -38,7 +38,7 @@ export function Landing({ locale }: { locale: Locale }) {
             <p className="mt-6 max-w-2xl text-base leading-7 text-secondary sm:text-lg">
               {content.hero.description}
             </p>
-            <p className="mt-5 max-w-2xl font-mono text-xs leading-5 text-tertiary">
+            <p className="mt-5 max-w-2xl font-mono text-sm leading-6 text-tertiary">
               {content.hero.microDisclosure}
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">

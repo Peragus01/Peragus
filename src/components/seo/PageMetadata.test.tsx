@@ -67,4 +67,28 @@ describe('PageMetadata', () => {
     )
     managedNodes.forEach((node) => expect(document.head).toContainElement(node))
   })
+
+  it('removes noindex when client navigation returns to a public page', () => {
+    const props = {
+      locale: 'pt' as const,
+      title: 'Página não encontrada | Peragus',
+      description: 'A página solicitada não foi encontrada.',
+      canonicalPath: '/missing',
+      alternates: { pt: '/', es: '/es', en: '/en' },
+    }
+    const { rerender } = render(<PageMetadata {...props} noIndex />)
+
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'noindex, nofollow',
+    )
+    expect(document.querySelectorAll('link[rel="alternate"]')).toHaveLength(0)
+
+    rerender(<PageMetadata {...props} title="Peragus" canonicalPath="/" />)
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'index, follow',
+    )
+    expect(document.querySelectorAll('link[rel="alternate"]')).toHaveLength(3)
+  })
 })

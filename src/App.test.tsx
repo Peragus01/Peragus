@@ -24,6 +24,28 @@ describe('public routes', () => {
     expect(screen.queryByText(/painel operacional/i)).not.toBeInTheDocument()
   })
 
+  it('redirects locale-like unsupported prefixes to the Portuguese root', () => {
+    renderPath('/fr/terms')
+    expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: /página não encontrada/i })).not.toBeInTheDocument()
+  })
+
+  it('gives normal unknown paths localized 404 metadata', () => {
+    renderPath('/en/missing-page')
+
+    expect(screen.getByRole('heading', { name: /page not found/i })).toBeInTheDocument()
+    expect(document.documentElement.lang).toBe('en')
+    expect(document.title).toBe('Page not found | Peragus')
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      'https://peragus.com.br/en/missing-page',
+    )
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'noindex, nofollow',
+    )
+  })
+
   it('renders the landing page at the Spanish root', () => {
     renderPath('/es')
     expect(screen.getByRole('heading', { name: /pix en brasil/i })).toBeInTheDocument()

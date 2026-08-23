@@ -29,4 +29,16 @@ describe('localized homepage content', () => {
       expect(serialized).not.toContain(claim)
     }
   })
+
+  it.each([
+    ['pt', /histórico de testes inspecionável/i, /demonstração/i],
+    ['es', /historial de pruebas inspeccionable/i, /demostración/i],
+    ['en', /inspectable test history/i, /demonstration/i],
+  ] as const)('describes inspectable test history factually in %s', (locale, title, sandboxScope) => {
+    const history = homeContent[locale].operations.items.find((item) => title.test(item.title))
+
+    expect(history).toBeDefined()
+    expect(history?.body).toMatch(sandboxScope)
+    expect(history?.body).not.toMatch(/produção|producción|production backend/i)
+  })
 })

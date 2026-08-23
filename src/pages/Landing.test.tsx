@@ -43,6 +43,7 @@ describe('Landing', () => {
       microDisclosure.compareDocumentPosition(firstPrimaryCta) &
         Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
+    expect(microDisclosure).toHaveClass('text-sm')
   })
 
   it('uses one primary CTA label consistently', () => {
@@ -104,12 +105,14 @@ describe('Landing', () => {
     const infrastructure = document.querySelector<HTMLElement>('#infraestrutura')
     expect(infrastructure).not.toBeNull()
     const nodes = within(infrastructure!).getAllByRole('listitem')
-    expect(nodes).toHaveLength(4)
+    expect(nodes).toHaveLength(6)
     expect(nodes.map((node) => node.textContent)).toEqual([
       '01Cliente B2B',
       '02Pix simulado',
-      '03Orquestração Peragus',
-      '04MockUSDT na Amoy',
+      '03Confirmação do pagamento',
+      '04Orquestração Peragus',
+      '05Transferência MockUSDT',
+      '06Carteira do cliente na Amoy',
     ])
   })
 
