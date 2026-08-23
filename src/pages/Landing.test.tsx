@@ -4,6 +4,21 @@ import { describe, expect, it } from 'vitest'
 import { Landing } from './Landing'
 
 describe('Landing', () => {
+  it('publishes localized homepage metadata', () => {
+    render(
+      <MemoryRouter>
+        <Landing locale="es" />
+      </MemoryRouter>,
+    )
+
+    expect(document.documentElement.lang).toBe('es')
+    expect(document.title).toBe('Peragus | Sandbox B2B para Pix y liquidación on-chain')
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      'https://peragus.com.br/es',
+    )
+  })
+
   it('states the tested flow and limits before conversion', () => {
     render(
       <MemoryRouter>

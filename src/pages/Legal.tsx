@@ -1,14 +1,26 @@
+import { PageMetadata } from '@/components/seo/PageMetadata'
 import { Container } from '@/components/ui/container'
 import { Notice } from '@/components/ui/notice'
 import { legalContent } from '@/content/legal'
 import type { LegalPageType } from '@/content/legal/types'
-import type { Locale } from '@/i18n/routing'
+import { pagePath, type Locale } from '@/i18n/routing'
 
 export function LegalPage({ locale, type }: { locale: Locale; type: LegalPageType }) {
   const document = legalContent[locale][type]
 
   return (
     <main id="main-content" tabIndex={-1} className="pb-24 pt-32">
+      <PageMetadata
+        locale={locale}
+        title={`${document.title} | Peragus`}
+        description={document.description}
+        canonicalPath={pagePath(locale, type)}
+        alternates={{
+          pt: pagePath('pt', type),
+          es: pagePath('es', type),
+          en: pagePath('en', type),
+        }}
+      />
       <Container>
         <p className="font-mono text-xs uppercase tracking-[.12em] text-sandbox">
           {document.version}

@@ -4,6 +4,21 @@ import { describe, expect, it } from 'vitest'
 import { LegalPage } from './Legal'
 
 describe('LegalPage', () => {
+  it('publishes localized legal-page metadata', () => {
+    render(
+      <MemoryRouter>
+        <LegalPage locale="en" type="security" />
+      </MemoryRouter>,
+    )
+
+    expect(document.documentElement.lang).toBe('en')
+    expect(document.title).toBe('Security | Peragus')
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      'https://peragus.com.br/en/security',
+    )
+  })
+
   it('marks terms as an editorial draft pending qualified review', () => {
     render(
       <MemoryRouter>

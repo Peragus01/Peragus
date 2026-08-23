@@ -1,19 +1,27 @@
 import { Link } from 'react-router-dom'
 import { InfrastructureDiagram } from '@/components/marketing/InfrastructureDiagram'
 import { SettlementEventPanel } from '@/components/marketing/SettlementEventPanel'
+import { PageMetadata } from '@/components/seo/PageMetadata'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { Notice } from '@/components/ui/notice'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { Surface } from '@/components/ui/surface'
 import { homeContent } from '@/content/home'
-import { sandboxPath, sectionPath, type Locale } from '@/i18n/routing'
+import { homePath, sandboxPath, sectionPath, type Locale } from '@/i18n/routing'
 
 export function Landing({ locale }: { locale: Locale }) {
   const content = homeContent[locale]
 
   return (
     <main id="main-content" data-locale={locale} tabIndex={-1}>
+      <PageMetadata
+        locale={locale}
+        title={content.seo.title}
+        description={content.seo.description}
+        canonicalPath={homePath(locale)}
+        alternates={{ pt: homePath('pt'), es: homePath('es'), en: homePath('en') }}
+      />
       <section className="relative overflow-hidden pb-20 pt-32 sm:pb-28 sm:pt-40">
         <div
           aria-hidden="true"
