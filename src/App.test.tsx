@@ -15,7 +15,7 @@ describe('public routes', () => {
   it('renders the B2B sandbox proposition at the root', () => {
     renderPath('/')
     expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
-    expect(screen.getByText(/mockusdt/i)).toBeInTheDocument()
+    expect(screen.getByText(/mockusdt não é usdt/i)).toBeInTheDocument()
   })
 
   it('does not expose the former retail dashboard', () => {
@@ -26,7 +26,7 @@ describe('public routes', () => {
 
   it('renders the landing page at the Spanish root', () => {
     renderPath('/es')
-    expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /pix en brasil/i })).toBeInTheDocument()
     expect(screen.getByRole('main')).toHaveAttribute('data-locale', 'es')
   })
 
@@ -51,7 +51,7 @@ describe('public routes', () => {
 
   it('renders the landing page at the English root', () => {
     renderPath('/en')
-    expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /pix in brazil/i })).toBeInTheDocument()
     expect(screen.getByRole('main')).toHaveAttribute('data-locale', 'en')
   })
 
