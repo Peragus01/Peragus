@@ -27,6 +27,7 @@ describe('public routes', () => {
   it('renders the landing page at the Spanish root', () => {
     renderPath('/es')
     expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
+    expect(screen.getByRole('main')).toHaveAttribute('data-locale', 'es')
   })
 
   it('wraps localized pages in the accessible marketing layout', () => {
@@ -51,6 +52,7 @@ describe('public routes', () => {
   it('renders the landing page at the English root', () => {
     renderPath('/en')
     expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
+    expect(screen.getByRole('main')).toHaveAttribute('data-locale', 'en')
   })
 
   it('localizes the Spanish catch-all', () => {

@@ -1,6 +1,12 @@
-export function Landing() {
+import type { Locale } from '@/i18n/routing'
+
+export function Landing({ locale }: { locale: Locale }) {
   return (
-    <main id="main-content" className="min-h-screen px-6 py-32">
+    <main
+      id="main-content"
+      data-locale={locale}
+      className="min-h-screen px-6 py-32"
+    >
       <p>Sandbox B2B - Polygon Amoy</p>
       <h1>Pix no Brasil. Liquidação na sua carteira.</h1>
       <p>

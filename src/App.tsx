@@ -19,7 +19,7 @@ export default function App() {
           path={homePath(locale)}
           element={<MarketingLayout locale={locale} />}
         >
-          <Route index element={<Landing />} />
+          <Route index element={<Landing locale={locale} />} />
         </Route>
       ))}
       <Route path="*" element={<LocalizedNotFound />} />
