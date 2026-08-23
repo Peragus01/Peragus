@@ -23,4 +23,26 @@ describe('public routes', () => {
     expect(screen.getByRole('heading', { name: /página não encontrada/i })).toBeInTheDocument()
     expect(screen.queryByText(/painel operacional/i)).not.toBeInTheDocument()
   })
+
+  it('renders the landing page at the Spanish root', () => {
+    renderPath('/es')
+    expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
+  })
+
+  it('renders the landing page at the English root', () => {
+    renderPath('/en')
+    expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
+  })
+
+  it('localizes the Spanish catch-all', () => {
+    renderPath('/es/desconocida')
+    expect(screen.getByRole('heading', { name: /página no encontrada/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /volver a peragus/i })).toHaveAttribute('href', '/es')
+  })
+
+  it('localizes the English catch-all', () => {
+    renderPath('/en/missing')
+    expect(screen.getByRole('heading', { name: /page not found/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /back to peragus/i })).toHaveAttribute('href', '/en')
+  })
 })
