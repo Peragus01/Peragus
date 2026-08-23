@@ -14,6 +14,7 @@ export type HomeContent = {
     label: string
     title: string
     description: string
+    microDisclosure: string
     primaryCta: string
     secondaryCta: string
   }

@@ -11,6 +11,7 @@ export const ptHome = {
     label: 'Sandbox B2B - Polygon Amoy',
     title: 'Pix no Brasil. Liquidação na sua carteira.',
     description: 'Valide, em um ambiente de testes, o fluxo entre uma cobrança Pix simulada e o envio de MockUSDT para sua carteira na Polygon Amoy.',
+    microDisclosure: 'Ambiente de testes: sem movimentação de fundos reais. MockUSDT não é USDT.',
     primaryCta: 'Criar conta sandbox', secondaryCta: 'Entender o fluxo',
   },
   eventPanel: { operation: 'OPERAÇÃO #PGS-2048', environment: 'TESTNET', simulated: 'simulado' },

@@ -11,6 +11,7 @@ export const enHome = {
     label: 'B2B sandbox - Polygon Amoy',
     title: 'Pix in Brazil. Settlement to your wallet.',
     description: 'Validate, in a test environment, the flow between a simulated Pix payment and MockUSDT delivery to your wallet on Polygon Amoy.',
+    microDisclosure: 'Test environment: no real funds are moved. MockUSDT is not USDT.',
     primaryCta: 'Create sandbox account', secondaryCta: 'Understand the flow',
   },
   eventPanel: { operation: 'OPERATION #PGS-2048', environment: 'TESTNET', simulated: 'simulated' },

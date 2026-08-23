@@ -15,7 +15,7 @@ describe('public routes', () => {
   it('renders the B2B sandbox proposition at the root', () => {
     renderPath('/')
     expect(screen.getByRole('heading', { name: /pix no brasil/i })).toBeInTheDocument()
-    expect(screen.getByText(/mockusdt não é usdt/i)).toBeInTheDocument()
+    expect(screen.getByRole('note')).toHaveTextContent(/mockusdt não é usdt/i)
   })
 
   it('does not expose the former retail dashboard', () => {

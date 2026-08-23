@@ -30,7 +30,10 @@ export function Landing({ locale }: { locale: Locale }) {
             <p className="mt-6 max-w-2xl text-base leading-7 text-secondary sm:text-lg">
               {content.hero.description}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <p className="mt-5 max-w-2xl font-mono text-xs leading-5 text-tertiary">
+              {content.hero.microDisclosure}
+            </p>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <Link to={sandboxPath(locale, 'register')}>
                   {content.hero.primaryCta}

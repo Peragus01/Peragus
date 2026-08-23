@@ -18,10 +18,16 @@ describe('Landing', () => {
         name: 'Pix no Brasil. Liquidação na sua carteira.',
       }),
     ).toBeInTheDocument()
+    const microDisclosure = within(main).getByText(
+      'Ambiente de testes: sem movimentação de fundos reais. MockUSDT não é USDT.',
+    )
+    const firstPrimaryCta = within(main).getAllByRole('link', {
+      name: 'Criar conta sandbox',
+    })[0]
     expect(
-      within(main).getByText(/sem movimentação de fundos reais/i),
-    ).toBeInTheDocument()
-    expect(within(main).getByText(/mockusdt não é usdt/i)).toBeInTheDocument()
+      microDisclosure.compareDocumentPosition(firstPrimaryCta) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
   })
 
   it('uses one primary CTA label consistently', () => {
